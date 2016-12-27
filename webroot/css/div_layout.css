@@ -1,0 +1,202 @@
+#page  {
+   margin: 0px auto 0px auto;
+   height: 1020px;
+   width: 1030px;
+   position: relative;
+   background-image: url("/img/WG_17_BG.jpg");
+   background-repeat: no-repeat;
+}
+
+#main_body  {
+   background-color: #9fa8a3 ;
+   position: absolute;
+   left: 0px;
+   top: 350px;
+   z-index: 1;
+   width: 1030px;
+   //height: 770px;
+}
+
+#footer  {
+	position: relative;
+	bottom: ;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	height: 120px;
+	width: 100%;
+	left: 0px;
+	background-image: url("/img/footer.jpg");
+   background-repeat: no-repeat;
+}
+
+#innerfooter  {
+   width: 1036px;
+   font: 9px/37px Verdana, sans-serif;
+   height: 37px;
+   margin: 0px;
+   padding: 0px;
+   text-align: left;
+}
+
+
+#leftcolumn  {
+	background-color: #f29b20 ;
+   position: absolute;
+   left: 0px;
+   top: 35px;
+   z-index: 5;
+   width: 150px;
+}
+
+#centercolumn  {
+	background: url("/img/whitepaper.jpg")  ;
+   position: absolute;
+   left: 150px;
+   top: 35px;
+   z-index: 5;
+   width: 730px;
+}
+
+#rightcolumn  {
+	background-color: #f29b20 ;
+   position: absolute;
+   left: 880px;
+   top: 35px;
+   z-index: 5;
+   width: 150px;
+}
+
+#main_text  {
+   background: url("/img/whitepaper.jpg")  ;
+   position: absolute;
+   left: 128px;
+   top: 224px;
+   z-index: 3;
+   width: 1030px;
+   height: 779px;
+}
+
+#bannertop  {
+   background: url("/img/banner.png") no-repeat;
+   position: absolute ;
+   left: 88px;
+   top: 26px;
+   z-index: 4;
+   width: 865px;
+   height: 307px;
+}
+
+#bannerlower  {
+   background: url("/img/ornamentA-date.png") no-repeat;
+   position: absolute;
+   left: 215px;
+   top: 215px;
+   z-index: 5;
+   width: 600px;
+   height: 80px;
+}
+
+a ins  {
+   text-decoration: none;
+}
+
+*:focus  {
+   outline-style: none;
+}
+
+#hyattregencybellevuewa  {
+   background: url("/img/hyattregencybellevuewa.gif") no-repeat;
+   position: absolute;
+   left: 92px;
+   top: 161px;
+   z-index: 5;
+   width: 729px;
+   height: 18px;
+}
+
+
+
+#guitar  {
+   background: url("/img/guitar.gif") no-repeat;
+   position: absolute;
+   left: -130px;
+   top: 0px;
+   z-index: -1;
+   width: 450px;
+   height: 1014px;
+}
+
+
+#ovallogo  {
+   background: url("/img/ovallogo.gif") no-repeat;
+   position: absolute;
+   left: 720px;
+   top: 13px;
+   z-index: 6;
+   width: 314px;
+   height: 174px;
+}
+
+#page_bkg  {
+   position: absolute;
+   width: 1036px;
+   height: 1020px;
+   left: 0px;
+   top: 0px;
+   display: block;
+   z-index: 1;
+}
+
+.fl li *,
+.fl li a  {
+   display: inline;
+}
+
+#top  {
+   min-height: 100%;
+   width: 100%;
+}
+
+.c_b * a  {
+   color: #000000;
+}
+
+.fl li  {
+   float: left;
+   display: inline;
+}
+
+a.nm  {
+   background-position: 0px 0px;
+}
+
+body  {
+   padding: 0px;
+   margin: 0px;
+   background-color: #7a4d30;
+   background-image: url("/img/bg-tile2.jpg");
+   background-attachment: scroll;
+   height: 100%;
+   -webkit-text-size-adjust: none;
+}
+
+#showframe  {
+	position: absolute;
+	left: 522px;
+	top: 180px;
+	z-index: 5;
+	width: 387px;
+	height: 262px;
+	background-image: url("/img/showframe.gif");
+	background-repeat: no-repeat;
+}
+
+#showpicturebox  {
+   position: absolute;
+   left: 526px;
+   top: 184px;
+   z-index: 4;
+   width: 377px;
+   height: 251px;
+}
