@@ -20,7 +20,6 @@ class UsersTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-	
 	 
 	public function findScheduledHours(Query $query, array $options = [])
     {
