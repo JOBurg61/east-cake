@@ -28,27 +28,33 @@ class UsersController extends AppController
     public function index($q = null)
     {
 
+		
 		if(!in_array($this->Auth->user('role'),['admin','coordinator']))
 		{
 			return $this->redirect(['action' => 'calendar']);
 		}
 		
-		if(is_null($q)){
-			$users = $this->Users->find('all');
-		}else{		
+		$this->loadModel('Jobs');
+		$jobs = $this->Jobs->find('all')->order('id');		
+		
+
+		$users = $this->Users->find()->distinct()->contain(['Schedules']);
+	
+		if(!is_null($q)){
 			$like = '%' . $q . '%';
-			$users = $this->Users->find('all')
-								->where(['first_name LIKE' => $like])
-								->orWhere(['last_name LIKE' => $like]);
+			$users->where(['first_name LIKE' => $like])->orWhere(['last_name LIKE' => $like]);
 		}
 		
-		#$users->select(['scheduled_hours' => $this->$schedules->func()->sum('start_date - end_date')])->group('user_id');
-		# ['scheduled_hours' => $this->func()->sum('Schedules.start_date - Schedules.end_date')->where(['Users.id' => 'Schedules.user_id'])->group('Schedules.user_id')]	 
+		$jr = $this->request->query('job-interest');			
+		if(!is_null($jr)){
+			$users->leftJoinWith('Applicants')->where(['Applicants.job_id IN' => $jr]); 
+		}
 		$this->viewBuilder()->layout('east');
 		$users = $this->paginate($users);
 
         $this->set(compact('users'));
-        $this->set('_serialize', ['users']);
+		$this->set(compact('jobs'));
+        $this->set('_serialize', ['users', 'jobs']);
     }
 	
 	public function applicants(){ $this->index(); }
@@ -98,7 +104,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => ['Schedules']
         ]);
 
         $this->set('user', $user);
