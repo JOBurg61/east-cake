@@ -4,9 +4,20 @@ use Cake\Routing\Router;
 ?>
 
 <div class="row bg-info form-group">
-	<div class="btn-group btn-group-sm col-md-8" role="group">
+	<div class="btn-group btn-group-sm col-md-6" role="group">
 		<?= $this->Html->link('New Volunteer', ['controller' => 'users', 'action' => 'add' ], ['class'=>'btn btn-default'] )  ?>
 	</div>
+	<div class="col-md-2 dropdown" role="group">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			Job Interest
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<?php foreach($jobs as $job): ?>
+			<li><input type="checkbox" class="job-choice" id="job-select-<?= $job->id ?>" name="job-interest[]" value="<?= $job->id ?>"><?= h($job->description) ?></input></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>	
 	<div class="col-md-2" role="group">
 		<input type="text" class="form-control" placeholder="Search" id="search-data">
 	</div>	
@@ -66,9 +77,18 @@ use Cake\Routing\Router;
 			function () {
 				var c = "<?php echo Router::url(['controller' => 'Users', 'action' => 'index']) ?>";
 				var q = $('#search-data').val();
-				//alert(c + '/' + q);
-				window.location.href = c + '/index/' + q;
+				var j = '?';
 				
+				$(".job-choice")  // for all checkboxes
+					.each(
+						function(e) {  // first pass, create name mapping
+							if($(this).is(':checked')){
+								j += '&job-interest[]=' + $(this).val();
+							}
+						}
+					);
+					
+				window.location.href = c + '/index/' + q + j;				
 			}
 		);
 </script>
