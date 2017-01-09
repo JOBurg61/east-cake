@@ -38,7 +38,7 @@ class UsersController extends AppController
 		$jobs = $this->Jobs->find('all')->order('id');		
 		
 
-		$users = $this->Users->find()->distinct()->contain(['Schedules']);
+		$users = $this->Users->find()->distinct()->contain(['Schedules','Applicants']);
 	
 		if(!is_null($q)){
 			$like = '%' . $q . '%';
@@ -49,6 +49,7 @@ class UsersController extends AppController
 		if(!is_null($jr)){
 			$users->leftJoinWith('Applicants')->where(['Applicants.job_id IN' => $jr]); 
 		}
+		
 		$this->viewBuilder()->layout('east');
 		$users = $this->paginate($users);
 

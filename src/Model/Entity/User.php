@@ -19,7 +19,20 @@ use Cake\Auth\DefaultPasswordHasher;
 class User extends Entity
 {
 
-	protected $_virtual = ['full_name'];
+	protected $_virtual = ['full_name', 'scheduled_hours'];
+	
+	protected function _getScheduledHours(){
+		$hours = date_create('00:00');
+		$zero = clone($hours);
+
+		foreach($this->schedules as $s) {
+				$b = date_create($s->start_date);
+				$e = date_create($s->end_date);
+				$hours->add(date_diff($b, $e));
+		}
+		
+		return $zero->diff($hours)->format("%H:%I");
+	}
 
     protected function _getFullName() {
         return $this->_properties['first_name'] . ' ' . $this->_properties['last_name'];
