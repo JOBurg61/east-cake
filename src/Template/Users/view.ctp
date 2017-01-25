@@ -31,5 +31,9 @@
             <th><?= __('Modified') ?></th>
             <td><?= h($user->modified) ?></td>
         </tr>
+		<tr>
+            <th><?= __('Notes') ?></th>
+            <td><?= h($user->notes) ?></td>
+        </tr>
     </table>
 </div>

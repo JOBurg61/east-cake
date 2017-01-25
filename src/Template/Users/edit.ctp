@@ -21,6 +21,7 @@
             echo $this->Form->input('role', [
 				'options' => ['admin' => 'Admin', 'coordinator' => 'Coordinator', 'volunteer' => 'Volunteer', 'applicant' => 'Applicant']]);
             echo $this->Form->input('username');
+			echo $this->Form->input('notes');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
