@@ -137,20 +137,12 @@ class SchedulesController extends AppController
 		$schedule = null;
 		
 		if(in_array($this->Auth->user('role'),['admin','coordinator'])) 
-		{		
-			$schedule = $this->Schedules->get($id);	
-		}else{
-			$schedule = $this->Schedules->find()->where(['id' => $id, 'user_id' => $this->Auth->user('id'), 'type' => 'pend'])->first();
-			
-			if(is_null($schedule)){ 
-				$this->response->statusCode('403');
-				return $this->response;
+		{	
+			$schedule = $this->Schedules->get($id);
+			if ($this->Schedules->delete($schedule)) {
+				$this->Flash->success(__('The schedule has been deleted.'));
 			}
 		}
-		
-        if ($this->Schedules->delete($schedule)) {
-            $this->Flash->success(__('The schedule has been deleted.'));
-        }
 		
         return $this->redirect(['action' => 'index']);
     }
